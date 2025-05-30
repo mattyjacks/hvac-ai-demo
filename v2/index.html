@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        // Detect if we're on Vercel deployment
+        const isVercel = window.location.hostname.includes('vercel.app') || 
+                         (window.location.hostname !== 'localhost' && 
+                          !window.location.hostname.includes('127.0.0.1'));
+        
+        // Dynamically load environment-specific CSS
+        if (isVercel) {
+            document.write('<link rel="stylesheet" href="consolidated.css?v=' + new Date().getTime() + '">');
+        }
+    </script>
     <script src="force-css.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">

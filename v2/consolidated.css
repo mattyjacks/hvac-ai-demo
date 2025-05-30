@@ -1,0 +1,179 @@
+/* 
+ * Consolidated CSS for Vercel deployment
+ * This file contains all critical styling to ensure consistent appearance
+ * between local and production environments
+ */
+
+/* ---------- RESET & BASE STYLES ---------- */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ---------- LAYOUT STRUCTURE ---------- */
+
+/* App container */
+.app-container {
+  display: flex !important;
+  width: 100% !important;
+  height: calc(100vh - 0px) !important;
+  overflow: hidden !important;
+}
+
+/* Chat sidebar */
+.chat-sidebar {
+  width: 260px !important;
+  min-width: 260px !important;
+  max-width: 260px !important;
+  flex: 0 0 260px !important;
+  background-color: var(--sidebar-bg-color, #f5f7fa) !important;
+  height: 100% !important;
+  overflow-y: auto !important;
+  border-right: 1px solid var(--border-color, #e2e8f0) !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.sidebar-header {
+  padding: 1rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  border-bottom: 1px solid var(--border-color, #e2e8f0) !important;
+}
+
+/* Main content */
+.main-content {
+  flex: 1 !important;
+  width: calc(100% - 260px) !important;
+  max-width: calc(100% - 260px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  overflow-y: auto !important;
+}
+
+.main-header {
+  padding: 1rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  border-bottom: 1px solid var(--border-color, #e2e8f0) !important;
+}
+
+/* ---------- FEATURE CARDS ---------- */
+
+.feature-cards {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
+  padding: 1rem !important;
+}
+
+.feature-card {
+  flex: 1 1 calc(25% - 1rem) !important;
+  min-width: 150px !important;
+  background-color: var(--card-bg-color, #ffffff) !important;
+  border-radius: 0.5rem !important;
+  padding: 1rem !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+}
+
+.feature-icon {
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 0.5rem !important;
+  border-radius: 50% !important;
+  color: white !important;
+}
+
+.feature-title {
+  font-weight: 500 !important;
+  margin-top: 0.5rem !important;
+}
+
+/* Chat area */
+.chat-area {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: calc(100% - 150px) !important;
+}
+
+.messages-container {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  padding: 1rem !important;
+}
+
+/* ---------- MOBILE STYLES ---------- */
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column !important;
+  }
+  
+  .chat-sidebar {
+    position: fixed !important;
+    left: -100% !important;
+    top: 0 !important;
+    width: 85% !important;
+    min-width: 85% !important;
+    max-width: 85% !important;
+    height: 100% !important;
+    z-index: 1000 !important;
+    transition: left 0.3s ease !important;
+  }
+  
+  .chat-sidebar.active {
+    left: 0 !important;
+  }
+  
+  .main-content {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .feature-card {
+    flex: 1 1 calc(50% - 1rem) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-card {
+    flex: 1 1 100% !important;
+  }
+  
+  .main-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+}

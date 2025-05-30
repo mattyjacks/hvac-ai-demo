@@ -42,6 +42,10 @@
       "continue": true
     },
     {
+      "src": "^/$",
+      "dest": "/vercel-index.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
