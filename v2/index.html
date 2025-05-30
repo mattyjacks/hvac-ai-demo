@@ -4,20 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <title>hvacHat - AI Assistant</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="modern-styles.css">
-    <link rel="stylesheet" href="auth-styles.css">
-    <link rel="stylesheet" href="ai-loading-indicator.css">
-    <link rel="stylesheet" href="chat-enhancements.css">
-    <link rel="stylesheet" href="responsive.css">
-    <link rel="stylesheet" href="loading-states.css">
-    <link rel="stylesheet" href="web-search.css">
-    <link rel="stylesheet" href="sources-display.css">
-    <link rel="stylesheet" href="hvachat-ui.css">
-    <link rel="stylesheet" href="scroll-behavior.css">
-    <link rel="stylesheet" href="input-fix.css">
-    <link rel="stylesheet" href="chat-fixes.css">
-    <link rel="stylesheet" href="deployment-fixes.css">
+    <link rel="stylesheet" href="styles.css?v=1.0.1">
+    <link rel="stylesheet" href="modern-styles.css?v=1.0.1">
+    <link rel="stylesheet" href="auth-styles.css?v=1.0.1">
+    <link rel="stylesheet" href="ai-loading-indicator.css?v=1.0.1">
+    <link rel="stylesheet" href="chat-enhancements.css?v=1.0.1">
+    <link rel="stylesheet" href="responsive.css?v=1.0.1">
+    <link rel="stylesheet" href="loading-states.css?v=1.0.1">
+    <link rel="stylesheet" href="web-search.css?v=1.0.1">
+    <link rel="stylesheet" href="sources-display.css?v=1.0.1">
+    <link rel="stylesheet" href="hvachat-ui.css?v=1.0.1">
+    <link rel="stylesheet" href="scroll-behavior.css?v=1.0.1">
+    <link rel="stylesheet" href="input-fix.css?v=1.0.1">
+    <link rel="stylesheet" href="chat-fixes.css?v=1.0.1">
+    <link rel="stylesheet" href="deployment-fixes.css?v=1.0.1">
+    <link rel="stylesheet" href="vercel-override.css?v=1.0.1">
+    <script>
+        // Force CSS reload if we detect we're on Vercel
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.location.hostname.includes('vercel.app') || window.location.hostname !== 'localhost') {
+                // Force reload all CSS files after a short delay
+                setTimeout(function() {
+                    const links = document.querySelectorAll('link[rel="stylesheet"]');
+                    links.forEach(function(link) {
+                        // Add a timestamp to force reload
+                        const url = new URL(link.href);
+                        url.searchParams.set('t', new Date().getTime());
+                        link.href = url.toString();
+                    });
+                }, 100);
+            }
+        });
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Add theme color for mobile browsers -->
     <meta name="theme-color" content="#2563eb">

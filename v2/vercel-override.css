@@ -1,0 +1,95 @@
+/**
+ * Vercel-specific overrides to ensure proper styling in production
+ * This file contains important styles that might be affected by caching issues
+ */
+
+/* Force base layout properties */
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* App container sizing */
+.app-container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+}
+
+/* Chat sidebar sizing */
+.chat-sidebar {
+  width: 260px;
+  min-width: 260px;
+  max-width: 260px;
+  flex: 0 0 260px;
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  max-width: calc(100% - 260px);
+}
+
+/* Feature cards layout */
+.feature-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.feature-card {
+  flex: 1 1 calc(25% - 1rem);
+  min-width: 150px;
+}
+
+/* Ensure proper font sizes */
+body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .chat-sidebar {
+    position: fixed;
+    left: -100%;
+    width: 85%;
+    max-width: 85%;
+    z-index: 1000;
+    transition: left 0.3s ease;
+  }
+  
+  .chat-sidebar.active {
+    left: 0;
+  }
+  
+  .main-content {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .feature-card {
+    flex: 1 1 calc(50% - 1rem);
+  }
+  
+  /* Ensure messages container has appropriate height */
+  .messages-container {
+    height: 60vh !important;
+    min-height: 60vh !important;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .feature-card {
+    flex: 1 1 100%;
+  }
+}
+
+/* Force all images to be responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
