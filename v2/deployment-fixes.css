@@ -1,0 +1,136 @@
+/* 
+ * Deployment-specific CSS fixes for Vercel and other environments
+ * Ensures responsive behavior across all deployment environments
+ */
+
+/* Force responsive viewport on all devices */
+html, body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Ensure the app container respects viewport bounds */
+.app-container {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Fix for chat sidebar on mobile */
+@media (max-width: 768px) {
+  .chat-sidebar {
+    position: fixed;
+    left: -100%;
+    width: 85%;
+    height: 100%;
+    z-index: 1000;
+    transition: left 0.3s ease;
+    background: var(--background-color);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .chat-sidebar.active {
+    left: 0;
+  }
+  
+  .main-content {
+    width: 100%;
+  }
+  
+  /* Ensure messages container has appropriate height */
+  .messages-container {
+    height: 60vh !important;
+    min-height: 60vh !important;
+  }
+  
+  /* Ensure modal content fits on screen */
+  .modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .feature-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .custom-chat-settings {
+    padding: 0.5rem;
+  }
+  
+  /* Make buttons and controls easier to tap on mobile */
+  button, select, input[type="button"] {
+    min-height: 44px;
+  }
+}
+
+/* Fix for any flex layout issues */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Force all images to be responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mobile sidebar toggle button */
+.mobile-sidebar-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 10px;
+  color: var(--text-color);
+}
+
+/* Sidebar overlay */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Mobile specific styles */
+@media (max-width: 768px) {
+  .mobile-sidebar-toggle {
+    display: flex;
+  }
+  
+  /* Ensure the mobile header has space for the menu button */
+  .main-header {
+    padding-left: 10px;
+  }
+  
+  /* Adjust app title on mobile */
+  .app-title {
+    font-size: 1.2rem;
+  }
+  
+  .app-subtitle {
+    font-size: 0.8rem;
+  }
+}
